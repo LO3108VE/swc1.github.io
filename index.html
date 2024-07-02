@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yolo-个人娱乐站</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">首页</a>
+        <a href="files/home.html">家</a>
+        <a href="#">随笔</a>
+        <a href="#">记载</a>
+        <a href="files/photo.html">相册</a>
+        <a href="#">百宝箱</a>
+        <a href="#">留言</a>
+        <a href="#">联系我</a>
+        <a href="#">后台</a>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索点什么吧">
+            <button>搜索</button>
+        </div>
+    </div>
+    <div class="content">
+        <img src="images/logo.png" alt="头像" class="avatar">
+        <div class="time" id="time"></div>
+        <div class="date" id="date"></div>
+    </div>
+    <script>
+        const images = ['images/pexels-felixmittermeier-957002.jpg', 'images/ɽˮ 瀑布 国风 美丽风景4k电脑壁纸3840x2160_彼岸图网.jpg', 'images/田园小屋风景 4k壁纸 3840x2160_彼岸图网.jpg','images/《仙剑问情女神》蒙眼美女 画师 炼丹 高清无水印原图4K动漫壁纸_彼岸图网.jpg','images/天空风景 云 绿色草地 树 4k壁纸 3840_2160_彼岸图网.jpg','images/女孩 仰望 4k壁纸 3840_2160_彼岸图网.jpg','images/威尼斯旧港夜晚风景 4k壁纸 3840x2160_彼岸图网.jpg','images/海边 夕阳 海水 ɳ̲ 风景 4k壁纸 3840_2160_彼岸图网.jpg','images/清凉一夏 夏天海边风景 绿树 草地 蓝天白云4K壁纸_彼岸图网.jpg','images/田园小屋风景 4k壁纸 3840x2160_彼岸图网.jpg','images/金克丝 睡衣 4k壁纸 3840_2160_彼岸图网.jpg'];
+        let currentIndex = localStorage.getItem('bgImageIndex') || 0;
+        document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+        localStorage.setItem('bgImageIndex', (parseInt(currentIndex) + 1) % images.length);
+
+        function updateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const date = now.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric', weekday: 'long' });
+            document.getElementById('time').textContent = time;
+            document.getElementById('date').textContent = date;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
